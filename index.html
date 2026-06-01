@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="scroll-behavior: smooth; --html-font-size: 18px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Veloce - Precision in Motion</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script src="js/tailwind.config.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+
+    <nav class="bg-surface dark:bg-surface text-secondary dark:text-secondary docked full-width top-0 sticky z-50 border-b border-outline-variant dark:border-outline-variant flat no shadows">
+        <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+
+            <div class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface dark:text-on-surface">
+                Veloce
+            </div>
+
+            <div class="hidden md:flex space-x-8">
+                <a class="text-secondary dark:text-secondary border-b-2 border-secondary pb-1 font-label-lg text-label-lg scale-95 transition-transform duration-150"
+                    href="#collection">Collection</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#performance">Performance</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#engineering">Engineering</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#heritage">Heritage</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button aria-label="Toggle High Contrast"
+                    class="text-label-lg font-label-lg px-4 py-2 border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors duration-300"
+                    id="toggle-contrast">
+                    <span class="material-symbols-outlined">contrast</span>
+                </button>
+                <div class="flex space-x-2">
+                    <button aria-label="Decrease Font Size"
+                        class="text-label-lg font-label-lg px-2 py-2 border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors duration-300"
+                        id="decrease-font">
+                        <span class="material-symbols-outlined">text_decrease</span>
+                    </button>
+                    <button aria-label="Increase Font Size"
+                        class="text-label-lg font-label-lg px-2 py-2 border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors duration-300"
+                        id="increase-font">
+                        <span class="material-symbols-outlined">text_increase</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="relative w-full h-[921px] bg-black flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-80" id="threejs-container"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center pointer-events-none">
+            <h1 class="hero-text text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-white mb-4 uppercase">
+                Precision in Motion
+            </h1>
+            <p class="hero-text text-body-lg font-body-lg text-inverse-surface mb-8 max-w-2xl mx-auto uppercase tracking-widest">
+                The New Era of Performance
+            </p>
+            <button
+                class="hero-text bg-secondary-container text-white font-label-lg text-label-lg px-8 py-4 rounded-none hover:brightness-110 transition-all duration-300 uppercase tracking-widest pointer-events-auto">
+                Explore the Collection
+            </button>
+        </div>
+    </section>
+
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface" id="collection">
+        <div class="max-w-container-max mx-auto">
+            <div class="mb-16">
+                <h2 class="text-headline-lg font-headline-lg text-on-surface uppercase border-l-4 border-secondary-container pl-4">
+                    The Collection
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+
+                <div class="catalog-card bg-[#0D0D0D] border border-[#1F1F1F] hover:border-secondary-container transition-colors duration-300 group flex flex-col h-full">
+                    <div class="relative h-64 w-full bg-surface-container-lowest overflow-hidden">
+                        <img alt="Luxury car"
+                            class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfXdiBVtLZVlUgiMQybOw753JQ2RyKXnarilrwLXvvgtBjdcghBfGKA5cCWp7gl3BPQbT9RbsLnRmznlQbd2Awbzlk21Bzb7EPrmaUTKNiu0fo5E2fHufl8cT64CHR8JD1taFN6u_8jPsL-WGPv98MvcdoWzFWkLpZLwc3pUHO21rstl5Majm8xQv6Fg7FQSm9W9dw1PvO3khQ1kIHJudD67H3RWKYTVh0Qma9ipgTjSiqsNcD6ugQw8_Q6C4QB2dfluV34vMcYeY">
+                        <div class="absolute top-4 left-4 bg-[#1A1A1A] text-secondary-container border border-secondary-container px-2 py-1 text-label-sm font-label-sm uppercase">
+                            Available Now
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-2">Aero S-1</h3>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Acceleration</span>
+                                    <span class="text-on-surface font-body-md text-body-md">0-60 in 2.4s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Power</span>
+                                    <span class="text-on-surface font-body-md text-body-md">800 HP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-transparent border-2 border-secondary-container text-secondary-container font-label-lg text-label-lg px-6 py-3 hover:bg-secondary-container hover:text-white transition-all duration-300 uppercase">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <div class="catalog-card bg-[#0D0D0D] border border-[#1F1F1F] hover:border-secondary-container transition-colors duration-300 group flex flex-col h-full">
+                    <div class="relative h-64 w-full bg-surface-container-lowest overflow-hidden">
+                        <img alt="Luxury sports car"
+                            class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg1z0-zxWK6tdHfvEnAWU5RTUoUoRN-D2sTk8WRpSCT-qw-oKCJeqzUT2tctNt84Ai4nkMVwuyYplGhw0NfowsXfr-3fCfeP1Rdts84ZOwka0DCCXCglP7dytIdNyYMqUEPLsd6qJYx3uhcpO-MAnNnAYFmc9mmedA9sSOMiSxr6Y1yBgNNNF66q9qRpvrRLeiw_51p7CkR3bTtiI67XqxwSc7vXB1NoOtvQSlXVyHXBQF6garsqevZ5RgmioO5Z3h5oLEOueRL2U">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-2">GTS Monza</h3>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Acceleration</span>
+                                    <span class="text-on-surface font-body-md text-body-md">0-60 in 2.8s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Power</span>
+                                    <span class="text-on-surface font-body-md text-body-md">720 HP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-transparent border-2 border-secondary-container text-secondary-container font-label-lg text-label-lg px-6 py-3 hover:bg-secondary-container hover:text-white transition-all duration-300 uppercase">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <div class="catalog-card bg-[#0D0D0D] border border-[#1F1F1F] hover:border-secondary-container transition-colors duration-300 group flex flex-col h-full">
+                    <div class="relative h-64 w-full bg-surface-container-lowest overflow-hidden">
+                        <img alt="Classic luxury car"
+                            class="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6sO4sEFAO3-fYtM_0RszMvfpAZYONR6tEabrEli2UhWQaMAJF5zpLIIkV7qZHX_5bVU19L1CAGBku9jTX4RiDxTInw38WcIUDYTYEeUS3_4RgNM8BmYX2DLuOrcTIkYjyURap0K2k5mj2Gf9U7nbOrVww18OnLy55O8lEtkPqCUGsI5u5n0bG-w0K4L1kEUP3_ogi9ARnXEmgcx7INaBbUL1pEQmlfpNch3RE-9BqK3oxXLFj2SlCuVF6Rp9EAH0c5QSX5oVTXlM">
+                        <div class="absolute top-4 left-4 bg-[#1A1A1A] text-secondary-container border border-secondary-container px-2 py-1 text-label-sm font-label-sm uppercase">
+                            Limited Edition
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-2">V-12 Apex</h3>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Acceleration</span>
+                                    <span class="text-on-surface font-body-md text-body-md">0-60 in 2.1s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Power</span>
+                                    <span class="text-on-surface font-body-md text-body-md">1020 HP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-transparent border-2 border-secondary-container text-secondary-container font-label-lg text-label-lg px-6 py-3 hover:bg-secondary-container hover:text-white transition-all duration-300 uppercase">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-[#080808] border-t border-[#1F1F1F]" id="engineering">
+        <div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-headline-lg font-headline-lg text-on-surface uppercase mb-6 leading-tight">
+                    Mastery in<br><span class="text-secondary-container">Mechanics</span>
+                </h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-lg">
+                    Every Veloce engine is a testament to uncompromised engineering. Hand-assembled by master
+                    technicians, delivering raw power with surgical precision. The architecture of performance, crafted
+                    in carbon and titanium.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <span class="material-symbols-outlined text-secondary-container text-4xl">precision_manufacturing</span>
+                    <span class="font-label-lg text-label-lg text-on-surface uppercase tracking-widest">Hand-Built Accuracy</span>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 h-[500px] bg-[#0D0D0D] border border-[#1F1F1F] relative overflow-hidden group">
+                <img alt="Car engine"
+                    class="object-cover w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3UwNc7GkTsWC0-f4cwm_yFNWQ_lnTMxN1GYnj-tOeUHjiVnazO9XOZFA9VTXEKdUdoJQrghe0dpc6NUphst75iN7pYJiLVAQy1U6I0idPV-q4MSqPehYJ4Iq-sQHfaH0pipXtPY-y9xIBGHwBvHiFnsyYo0Xs8qc7krCJI-JBYk1y7wvIp3vts8mtjXq4_7XApzjCpJBSPc1HF0wpr36cNBvzo2INuNJeJCmshZZ7uHcPSL92KYlGYiPFwEe-Erzd4yWrnPsBpII">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary full-width bottom-0 border-t border-outline-variant dark:border-outline-variant flat no shadows mt-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-12 max-w-container-max mx-auto">
+            <!-- Brand -->
+            <div class="text-headline-md font-headline-md font-black text-secondary dark:text-secondary mb-6 md:mb-0 uppercase tracking-tighter">
+                Veloce
+            </div>
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase" href="#">Privacy Policy</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase" href="#">Terms of Service</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase" href="#">Legal</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase" href="#">Contact</a>
+            </div>
+            <!-- Copyright -->
+            <div class="text-body-md font-body-md text-on-surface-variant text-sm">
+                © 2024 VELOCE PERFORMANCE. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================
+         VLIBRAS ACCESSIBILITY WIDGET
+         ======================== -->
+    <div class="enabled" vw=""
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+        <div class="active" vw-access-button="">
+            <img class="vp-access-button"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_icon.svg?v=20260510">
+            <img class="vp-pop-up"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_popup.jpg?v=20260510">
+        </div>
+        <div vw-plugin-wrapper="">
+            <div vp="">
+                <div vp-box=""></div>
+                <div vp-message-box=""></div>
+                <div vp-settings=""></div>
+                <div vp-dictionary=""></div>
+                <div vp-settings-btn=""></div>
+                <div vp-info-screen=""></div>
+                <div vp-suggestion-screen=""></div>
+                <div vp-translator-screen=""></div>
+                <div vp-more-options-screen=""></div>
+                <div vp-emotions-tooltip=""></div>
+                <div vp-main-guide-screen=""></div>
+                <div vp-suggestion-button=""></div>
+                <div vp-rate-box=""></div>
+                <div vp-change-avatar=""></div>
+                <div vp-aux-controls=""></div>
+                <div vp-controls=""></div>
+                <span vp-click-blocker=""></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VLibras Plugin -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- Application Modules -->
+    <script src="js/accessibility.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/threejs-scene.js"></script>
+
+</body>
+
+</html>
