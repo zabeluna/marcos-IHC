@@ -1,0 +1,685 @@
+/* ============================
+   BASE & ACCESSIBILITY STYLES
+   ============================ */
+
+html {
+    font-size: 16px; /* controlled directly via JS: html.style.fontSize */
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: theme('colors.surface');
+    color: theme('colors.on-surface');
+}
+
+
+/* Keyboard Focus Outline */
+*:focus-visible {
+    outline: 3px solid #dc143c;
+    outline-offset: 4px;
+}
+
+/* Utility for Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ============================
+   VLIBRAS WIDGET STYLES
+   ============================ */
+[vw] [vw-access-button] {
+    display: none;
+    flex-direction: row-reverse;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    right: 0;
+    left: auto;
+}
+
+[vw] [vw-access-button] img {
+    max-height: 40px;
+    transition: all 0.5s ease;
+    border-radius: 8px;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+[vw] [vw-access-button] .vp-access-button {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+[vw] [vw-access-button] .vp-pop-up {
+    position: absolute;
+    height: 40px;
+    min-width: 150px;
+    z-index: 0;
+    left: 0;
+    right: auto;
+}
+
+[vw] [vw-access-button]:hover {
+    width: 200px;
+}
+
+[vw] [vw-access-button].isLeft {
+    flex-direction: row;
+    left: 0;
+    right: auto;
+}
+
+[vw] [vw-access-button].isLeft .vp-pop-up {
+    left: auto;
+    right: 0;
+}
+
+[vw] [vw-access-button].isTopOrBottom:hover {
+    bottom: -20px;
+    top: 0;
+    margin-right: -80px;
+}
+
+[vw] [vw-access-button].active {
+    display: flex;
+}
+
+[vw].left [vw-plugin-wrapper] {
+    float: left;
+}
+
+[vw] [vw-plugin-wrapper] {
+    position: relative;
+    display: none;
+    width: 300px;
+    height: 100%;
+    float: right;
+    background: white;
+    -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+}
+
+[vw] [vw-plugin-wrapper].active {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 450px;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+div[vw] {
+    position: fixed;
+    max-width: 95vw;
+    min-height: 40px;
+    min-width: 40px;
+    z-index: 2147483645 !important;
+    display: none;
+    margin: 10px !important;
+}
+
+div[vw].enabled {
+    display: block;
+}
+
+div[vw].active {
+    margin-top: -285px;
+}
+
+div[vw].left {
+    left: 0;
+    right: initial;
+}
+
+/* ============================
+   3D CATALOG CARD STYLES
+   ============================ */
+
+.catalog-card-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.catalog-card-3d:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 168, 76, 0.06);
+}
+
+/* Glowing gradient preview area per car */
+.car-preview-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.catalog-card-3d:hover .car-preview-bg {
+    opacity: 0.30;
+}
+
+.porsche-bg {
+    background: radial-gradient(ellipse at 50% 60%, #c9a84c 0%, #7a5f20 40%, transparent 75%);
+}
+
+.fiat-bg {
+    background: radial-gradient(ellipse at 50% 60%, #e4b74b 0%, #8a6a22 40%, transparent 75%);
+}
+
+.datsun-bg {
+    background: radial-gradient(ellipse at 50% 60%, #e0a53a 0%, #704f18 40%, transparent 75%);
+}
+
+/* Car silhouette SVG container */
+.car-silhouette-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* 3D badge pill */
+.car-3d-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--badge-color, #c9a84c);
+    border: 1px solid currentColor;
+    padding: 3px 9px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: badge-pulse 3s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.55; }
+}
+
+/* "Ver em 3D" button — no default button styles */
+.btn-3d-showroom {
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ============================
+   SHOWROOM 3D MODAL
+   ============================ */
+
+#showroom-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+#showroom-modal.visible {
+    opacity: 1;
+}
+
+#showroom-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+#showroom-modal-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+#showroom-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+#showroom-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(8, 8, 8, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(240, 236, 228, 0.9);
+    font-family: 'Inter', 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+#showroom-close-btn:hover {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: #c9a84c;
+    color: #c9a84c;
+}
+
+#showroom-close-btn .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.showroom-close-label {
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .showroom-close-label {
+        display: none;
+    }
+    #showroom-close-btn {
+        padding: 8px 10px;
+        top: 12px;
+        right: 12px;
+    }
+}
+
+/* ============================================================
+   SHOWROOM 3D VIEWER — inline overlay styles (inside modal)
+   All IDs prefixed with "showroom-" to avoid collisions.
+   Font: Outfit (loaded in index.html head).
+   ============================================================ */
+
+:root {
+    --sr-gold:       #c9a84c;
+    --sr-gold-light: #f0d080;
+    --sr-gold-dim:   #7a6530;
+    --sr-bg:         #080808;
+    --sr-text:       #f0ece4;
+    --sr-muted:      #7a7570;
+    --sr-font:       "Outfit", sans-serif;
+    --accent:        #c9a84c;
+}
+
+/* Canvas fills the entire modal area */
+#showroom-canvas-container {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+#showroom-canvas-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Loading overlay */
+#showroom-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--sr-bg);
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    font-family: var(--sr-font);
+}
+
+#showroom-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Vignette & scan-lines */
+#showroom-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.75) 100%);
+}
+
+#showroom-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+    );
+    opacity: 0.4;
+}
+
+/* Top header bar */
+#showroom-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    font-family: var(--sr-font);
+}
+
+#showroom-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Car info panel — bottom-left */
+#showroom-info-panel {
+    position: fixed;
+    bottom: 48px; left: 48px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+    font-family: var(--sr-font);
+}
+
+#showroom-info-panel.visible { opacity: 1; transform: translateY(0); }
+
+/* Specs panel — bottom-right */
+#showroom-specs-panel {
+    position: fixed;
+    bottom: 48px; right: 48px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+    font-family: var(--sr-font);
+}
+
+#showroom-specs-panel.visible { opacity: 1; transform: translateY(0); }
+
+/* Controls hint — bottom-center */
+#showroom-controls-hint {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(0);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    transition: opacity 0.8s ease 1s, transform 0.4s ease;
+    font-family: var(--sr-font);
+}
+
+#showroom-controls-hint.visible   { opacity: 1; }
+#showroom-controls-hint.fade-out  { opacity: 0; transform: translateX(-50%) translateY(8px); }
+
+/* Car selector — top-right */
+#showroom-car-selector {
+    position: fixed;
+    top: 88px; right: 36px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.9s;
+    background: rgba(8,8,8,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 6px 0;
+    min-width: 160px;
+    font-family: var(--sr-font);
+}
+
+#showroom-car-selector.visible { opacity: 1; }
+
+/* Accent line — left edge */
+#showroom-accent-line {
+    position: fixed;
+    left: 48px; top: 50%;
+    transform: translateY(-50%);
+    width: 1px; height: 0;
+    background: linear-gradient(to bottom, transparent, var(--sr-gold-dim) 30%, var(--sr-gold) 50%, var(--sr-gold-dim) 70%, transparent);
+    z-index: 2;
+    transition: height 1.2s ease 0.8s;
+}
+
+#showroom-accent-line.visible { height: 30vh; }
+
+/* Responsive adjustments inside modal */
+@media (max-width: 640px) {
+    #showroom-header      { padding: 20px 24px; }
+    #showroom-info-panel  { bottom: 90px; left: 24px; }
+    #showroom-specs-panel { display: none; }
+    #showroom-accent-line { display: none; }
+    #showroom-car-selector {
+        top: auto; bottom: 0; right: 0; left: 0;
+        flex-direction: row;
+        justify-content: center;
+        background: rgba(8,8,8,0.9);
+        padding: 8px 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SHOWROOM COMPONENT STYLES
+   (typography, animations and interactive pieces that live inside the modal)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Loading spinner */
+.loader-ring {
+    width: 72px;
+    height: 72px;
+    border: 2px solid rgba(201, 168, 76, 0.15);
+    border-top-color: var(--sr-gold, #c9a84c);
+    border-radius: 50%;
+    animation: sr-spin 1s linear infinite;
+    margin-bottom: 28px;
+}
+
+@keyframes sr-spin { to { transform: rotate(360deg); } }
+
+.loader-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sr-gold-dim, #7a6530);
+    margin-bottom: 10px;
+    font-family: var(--sr-font, "Outfit", sans-serif);
+}
+
+.loader-bar-track {
+    width: 200px;
+    height: 1px;
+    background: rgba(201, 168, 76, 0.15);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--sr-gold-dim, #7a6530), var(--sr-gold-light, #f0d080));
+    border-radius: 99px;
+    transition: width 0.2s ease;
+}
+
+/* Brand logo pill */
+.brand-logo {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--sr-gold, #c9a84c);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-family: var(--sr-font, "Outfit", sans-serif);
+}
+
+/* Car year / name / subtitle */
+.car-year {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sr-gold, #c9a84c);
+    margin-bottom: 8px;
+}
+
+.car-name {
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--sr-text, #f0ece4);
+    margin-bottom: 6px;
+}
+
+.car-subtitle {
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--sr-muted, #7a7570);
+}
+
+/* Spec items */
+.spec-item { text-align: right; }
+
+.spec-value {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    color: var(--sr-text, #f0ece4);
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.spec-label {
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sr-muted, #7a7570);
+}
+
+.spec-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(201, 168, 76, 0.2);
+    align-self: flex-end;
+}
+
+/* Controls hint pills */
+.ctrl {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sr-muted, #7a7570);
+}
+
+.ctrl-icon {
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Car selector items */
+.selector-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 12px 18px;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background 0.25s ease;
+    font-family: var(--sr-font, "Outfit", sans-serif);
+}
+
+.selector-item:hover          { background: rgba(255,255,255,0.04); }
+.selector-item.active         { border-left-color: var(--accent, #c9a84c); background: rgba(255,255,255,0.05); }
+
+.selector-year {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sr-muted, #7a7570);
+    transition: color 0.25s ease;
+}
+
+.selector-name {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 236, 228, 0.45);
+    max-width: 140px;
+    line-height: 1.35;
+    transition: color 0.25s ease;
+}
+
+.selector-item:hover .selector-year,
+.selector-item.active .selector-year { color: var(--accent, #c9a84c); }
+
+.selector-item:hover .selector-name,
+.selector-item.active .selector-name { color: var(--sr-text, #f0ece4); }
+
+/* Close button — always on top of everything else */
+#showroom-close-btn {
+    z-index: 200 !important;
+}

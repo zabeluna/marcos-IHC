@@ -1,0 +1,44 @@
+[
+  {
+    "id": "porsche_911_930_turbo",
+    "name": "Porsche 911<br>930 Turbo",
+    "year": "1975",
+    "subtitle": "3.0L Motor Boxer · Turbo",
+    "modelPath": "models/free_1975_porsche_911_930_turbo/scene.gltf",
+    "specs": [
+      { "value": "260",  "label": "Cavalos (cv)" },
+      { "value": "5.5s", "label": "0 — 100 km/h" },
+      { "value": "250",  "label": "Vel. máx (km/h)" }
+    ],
+    "cameraPosition": [2.8, 1.2, 3.2],
+    "accentColor": "#c9a84c"
+  },
+  {
+    "id": "fiat_punto_gt",
+    "name": "Fiat Punto GT<br>1995",
+    "year": "1995",
+    "subtitle": "1.4L Turbo · Hatch Esportivo",
+    "modelPath": "models/free_1995_fiat_punto_gt/scene_converted.gltf",
+    "specs": [
+      { "value": "131",  "label": "Cavalos (cv)" },
+      { "value": "7.9s", "label": "0 — 100 km/h" },
+      { "value": "203",  "label": "Vel. máx (km/h)" }
+    ],
+    "cameraPosition": [2.8, 1.2, 3.2],
+    "accentColor": "#e4b74b"
+  },
+  {
+    "id": "datsun_240k_gt",
+    "name": "Datsun 240K GT<br>1972",
+    "year": "1972",
+    "subtitle": "2.4L 6 Cilindros em Linha · Tração Traseira",
+    "modelPath": "models/free_1972_datsun_240k_gt/scene.gltf",
+    "specs": [
+      { "value": "130",   "label": "Cavalos (cv)" },
+      { "value": "10.0s", "label": "0 — 100 km/h" },
+      { "value": "175",   "label": "Vel. máx (km/h)" }
+    ],
+    "cameraPosition": [2.8, 1.2, 3.2],
+    "accentColor": "#e4b74b"
+  }
+]

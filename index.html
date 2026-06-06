@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="scroll-behavior: smooth; --html-font-size: 18px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Veloce - Precision in Motion</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;900&family=Outfit:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script src="js/tailwind.config.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Three.js hero (legacy UMD, used by threejs-scene.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- Three.js importmap for showroom ES modules -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+
+    <nav
+        class="bg-surface dark:bg-surface text-secondary dark:text-secondary docked full-width top-0 sticky z-50 border-b border-outline-variant dark:border-outline-variant flat no shadows">
+        <div class="flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+
+            <div
+                class="text-headline-md font-headline-md font-black tracking-tighter text-on-surface dark:text-on-surface">
+                Veloce
+            </div>
+
+            <div class="hidden md:flex space-x-8">
+                <a class="text-secondary dark:text-secondary border-b-2 border-secondary pb-1 font-label-lg text-label-lg scale-95 transition-transform duration-150"
+                    href="#collection">Coleção</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#performance">Desempenho</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#engineering">Engenharia</a>
+                <a class="text-on-surface dark:text-on-surface opacity-80 font-label-lg text-label-lg hover:text-secondary dark:hover:text-secondary transition-colors duration-300"
+                    href="#heritage">Legado</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+
+                <div class="flex space-x-2">
+                    <button aria-label="Diminuir tamanho da fonte"
+                        class="text-label-lg font-label-lg px-2 py-2 border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors duration-300"
+                        id="decrease-font">
+                        <span class="material-symbols-outlined">text_decrease</span>
+                    </button>
+                    <button aria-label="Aumentar tamanho da fonte"
+                        class="text-label-lg font-label-lg px-2 py-2 border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors duration-300"
+                        id="increase-font">
+                        <span class="material-symbols-outlined">text_increase</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="relative w-full h-[921px] bg-black flex items-center justify-center overflow-hidden">
+        <video class="absolute inset-0 w-full h-full object-cover z-0 opacity-50 scale-[1.15] origin-top-left" src="images/fundo-hero.mp4" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 z-0 opacity-80" id="threejs-container"></div>
+
+        <div
+            class="relative z-10 text-center px-4 max-w-container-max mx-auto flex flex-col items-center pointer-events-none">
+            <h1
+                class="hero-text text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-white mb-4 uppercase">
+                Precision in Motion
+            </h1>
+            <p
+                class="hero-text text-body-lg font-body-lg text-inverse-surface mb-8 max-w-2xl mx-auto uppercase tracking-widest">
+                The New Era of Performance
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface" id="collection">
+        <div class="max-w-container-max mx-auto">
+            <div class="mb-16">
+                <h2
+                    class="text-headline-lg font-headline-lg text-on-surface uppercase border-l-4 border-secondary-container pl-4">
+                    The Collection
+                </h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant mt-4 max-w-xl">
+                    Clique em qualquer modelo para explorar em visualização 3D interativa.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+
+                <div class="catalog-card-3d bg-[#0D0D0D] border border-[#1F1F1F] hover:border-[#c9a84c] transition-all duration-300 group flex flex-col h-full relative overflow-hidden cursor-pointer"
+                    id="card-porsche" onclick="openShowroom('porsche_911_930_turbo')" role="button" tabindex="0"
+                    aria-label="Abrir Porsche 911 930 Turbo no showroom 3D"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')this.click()">
+                    <!-- 3D Preview Placeholder -->
+                    <div class="relative h-64 w-full bg-[#080808] overflow-hidden flex items-center justify-center">
+                        <div class="car-3d-badge">3D</div>
+                        <img src="images/porsche-911.jpeg" alt="Porsche 911 930 Turbo"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            style="z-index:0;">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-sm"
+                            style="z-index:2;">
+                            <span
+                                class="text-[#c9a84c] text-label-sm font-label-sm uppercase tracking-widest flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base">view_in_ar</span>
+                                Abrir Showroom 3D
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-[#0A0A0A] text-[#c9a84c] border border-[#c9a84c]/40 px-2 py-1 text-label-sm font-label-sm uppercase tracking-wider"
+                            style="z-index:3;">
+                            1975
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-1">Porsche 911
+                            </h3>
+                            <p
+                                class="text-secondary-container text-label-sm font-label-sm uppercase tracking-widest mb-4">
+                                930 Turbo · 3.0L Motor Boxer</p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span
+                                        class="text-on-surface-variant text-label-sm font-label-sm uppercase">Potência</span>
+                                    <span class="text-on-surface font-body-md text-body-md">260 cv</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">0–100
+                                        km/h</span>
+                                    <span class="text-on-surface font-body-md text-body-md">5.5 s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Vel.
+                                        máx</span>
+                                    <span class="text-on-surface font-body-md text-body-md">250 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="btn-3d-showroom w-full border-2 border-[#c9a84c]/60 text-[#c9a84c] font-label-lg text-label-lg px-6 py-3 uppercase tracking-widest flex items-center justify-center gap-2 group-hover:bg-[#c9a84c] group-hover:text-black transition-all duration-300">
+                            <span class="material-symbols-outlined text-base">view_in_ar</span>
+                            Ver em 3D
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="catalog-card-3d bg-[#0D0D0D] border border-[#1F1F1F] hover:border-[#e4b74b] transition-all duration-300 group flex flex-col h-full relative overflow-hidden cursor-pointer"
+                    id="card-fiat" onclick="openShowroom('fiat_punto_gt')" role="button" tabindex="0"
+                    aria-label="Abrir Fiat Punto GT no showroom 3D"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')this.click()">
+                    <div class="relative h-64 w-full bg-[#080808] overflow-hidden flex items-center justify-center">
+                        <div class="car-3d-badge" style="--badge-color:#e4b74b">3D</div>
+                        <img src="images/fiat-punto.jpg" alt="Fiat Punto GT"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            style="z-index:0;">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-sm"
+                            style="z-index:2;">
+                            <span
+                                class="text-[#e4b74b] text-label-sm font-label-sm uppercase tracking-widest flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base">view_in_ar</span>
+                                Abrir Showroom 3D
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-[#0A0A0A] text-[#e4b74b] border border-[#e4b74b]/40 px-2 py-1 text-label-sm font-label-sm uppercase tracking-wider"
+                            style="z-index:3;">
+                            1995
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-1">Fiat Punto GT
+                            </h3>
+                            <p class="text-[#e4b74b] text-label-sm font-label-sm uppercase tracking-widest mb-4">1.4L
+                                Turbo · Hatch Esportivo</p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span
+                                        class="text-on-surface-variant text-label-sm font-label-sm uppercase">Potência</span>
+                                    <span class="text-on-surface font-body-md text-body-md">131 cv</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">0–100
+                                        km/h</span>
+                                    <span class="text-on-surface font-body-md text-body-md">7.9 s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Vel.
+                                        máx</span>
+                                    <span class="text-on-surface font-body-md text-body-md">203 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="btn-3d-showroom w-full border-2 border-[#e4b74b]/60 text-[#e4b74b] font-label-lg text-label-lg px-6 py-3 uppercase tracking-widest flex items-center justify-center gap-2 group-hover:bg-[#e4b74b] group-hover:text-black transition-all duration-300">
+                            <span class="material-symbols-outlined text-base">view_in_ar</span>
+                            Ver em 3D
+                        </button>
+                    </div>
+                </div>
+
+                <div class="catalog-card-3d bg-[#0D0D0D] border border-[#1F1F1F] hover:border-[#e4b74b] transition-all duration-300 group flex flex-col h-full relative overflow-hidden cursor-pointer"
+                    id="card-datsun" onclick="openShowroom('datsun_240k_gt')" role="button" tabindex="0"
+                    aria-label="Abrir Datsun 240K GT no showroom 3D"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')this.click()">
+                    <div class="relative h-64 w-full bg-[#080808] overflow-hidden flex items-center justify-center">
+                        <div class="car-3d-badge" style="--badge-color:#e4b74b">3D</div>
+                        <img src="images/datsun.jpg" alt="Datsun 240K GT"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                            style="z-index:0;">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-sm"
+                            style="z-index:2;">
+                            <span
+                                class="text-[#e4b74b] text-label-sm font-label-sm uppercase tracking-widest flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base">view_in_ar</span>
+                                Abrir Showroom 3D
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-[#0A0A0A] text-[#e4b74b] border border-[#e4b74b]/40 px-2 py-1 text-label-sm font-label-sm uppercase tracking-wider"
+                            style="z-index:3;">
+                            1972
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-1">Datsun 240K GT
+                            </h3>
+                            <p class="text-[#e4b74b] text-label-sm font-label-sm uppercase tracking-widest mb-4">2.4L
+                                6 Cilindros em Linha · Tração Traseira</p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span
+                                        class="text-on-surface-variant text-label-sm font-label-sm uppercase">Potência</span>
+                                    <span class="text-on-surface font-body-md text-body-md">130 cv</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">0–100
+                                        km/h</span>
+                                    <span class="text-on-surface font-body-md text-body-md">10.0 s</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-[#1F1F1F] pb-2">
+                                    <span class="text-on-surface-variant text-label-sm font-label-sm uppercase">Vel.
+                                        máx</span>
+                                    <span class="text-on-surface font-body-md text-body-md">175 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="btn-3d-showroom w-full border-2 border-[#e4b74b]/60 text-[#e4b74b] font-label-lg text-label-lg px-6 py-3 uppercase tracking-widest flex items-center justify-center gap-2 group-hover:bg-[#e4b74b] group-hover:text-black transition-all duration-300">
+                            <span class="material-symbols-outlined text-base">view_in_ar</span>
+                            Ver em 3D
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-[#080808] border-t border-[#1F1F1F]"
+        id="engineering">
+        <div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-headline-lg font-headline-lg text-on-surface uppercase mb-6 leading-tight">
+                    Maestria na<br><span class="text-secondary-container">Mecânica</span>
+                </h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-lg">
+                    Cada motor Veloce é uma prova de engenharia intransigente. Montado à mão por mestres técnicos,
+                    entregando potência bruta com precisão cirúrgica. A arquitetura da performance, forjada em
+                    carbono e titânio.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <span
+                        class="material-symbols-outlined text-secondary-container text-4xl">precision_manufacturing</span>
+                    <span class="font-label-lg text-label-lg text-on-surface uppercase tracking-widest">Precisão
+                        Feita à Mão</span>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 h-[500px] bg-[#0D0D0D] border border-[#1F1F1F] relative overflow-hidden group">
+                <img alt="Car engine"
+                    class="object-cover w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105"
+                    src="images\motor.webp">
+            </div>
+        </div>
+    </section>
+
+    <footer
+        class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary full-width bottom-0 border-t border-outline-variant dark:border-outline-variant flat no shadows mt-auto">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-12 max-w-container-max mx-auto">
+            <!-- Brand -->
+            <div
+                class="text-headline-md font-headline-md font-black text-secondary dark:text-secondary mb-6 md:mb-0 uppercase tracking-tighter">
+                Veloce
+            </div>
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase"
+                    href="#">Política de Privacidade</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase"
+                    href="#">Termos de Serviço</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase"
+                    href="#">Legal</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm hover:text-secondary dark:hover:text-secondary transition-colors duration-300 uppercase"
+                    href="#">Contato</a>
+            </div>
+
+            <div class="text-body-md font-body-md text-on-surface-variant text-sm">
+                © 2026 VELOCE PERFORMANCE. TODOS OS DIREITOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="enabled" vw=""
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+        <div class="active" vw-access-button="">
+            <img class="vp-access-button"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_icon.svg?v=20260510">
+            <img class="vp-pop-up"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_popup.jpg?v=20260510">
+        </div>
+        <div vw-plugin-wrapper="">
+            <div vp="">
+                <div vp-box=""></div>
+                <div vp-message-box=""></div>
+                <div vp-settings=""></div>
+                <div vp-dictionary=""></div>
+                <div vp-settings-btn=""></div>
+                <div vp-info-screen=""></div>
+                <div vp-suggestion-screen=""></div>
+                <div vp-translator-screen=""></div>
+                <div vp-more-options-screen=""></div>
+                <div vp-emotions-tooltip=""></div>
+                <div vp-main-guide-screen=""></div>
+                <div vp-suggestion-button=""></div>
+                <div vp-rate-box=""></div>
+                <div vp-change-avatar=""></div>
+                <div vp-aux-controls=""></div>
+                <div vp-controls=""></div>
+                <span vp-click-blocker=""></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VLibras Plugin -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- ========================
+         SHOWROOM 3D MODAL
+         ======================== -->
+    <div id="showroom-modal" aria-modal="true" aria-label="Showroom 3D" role="dialog" style="display:none">
+        <div id="showroom-modal-backdrop"></div>
+        <div id="showroom-modal-inner">
+
+            <!-- Close button -->
+            <button id="showroom-close-btn" aria-label="Fechar showroom" onclick="closeShowroom()">
+                <span class="material-symbols-outlined">close</span>
+                <span class="showroom-close-label">Fechar</span>
+            </button>
+
+            <!-- Loading overlay -->
+            <div id="showroom-loader">
+                <div class="loader-ring"></div>
+                <div class="loader-label">Carregando modelo</div>
+                <div class="loader-bar-track">
+                    <div class="loader-bar-fill" id="showroom-loader-bar"></div>
+                </div>
+            </div>
+
+            <!-- Three.js canvas target -->
+            <div id="showroom-canvas-container"></div>
+
+            <!-- Visual FX overlays -->
+            <div id="showroom-vignette"></div>
+            <div id="showroom-scanlines"></div>
+            <div id="showroom-accent-line"></div>
+
+            <!-- Top bar -->
+            <header id="showroom-header">
+                <div class="brand-logo">Showroom &nbsp;&middot;&nbsp; 3D</div>
+            </header>
+
+            <!-- Car info (bottom-left) -->
+            <div id="showroom-info-panel">
+                <div class="car-year"></div>
+                <div class="car-name"></div>
+                <div class="car-subtitle"></div>
+            </div>
+
+            <!-- Specs (bottom-right) -->
+            <div id="showroom-specs-panel">
+                <div class="spec-item">
+                    <div class="spec-value"></div>
+                    <div class="spec-label"></div>
+                </div>
+                <div class="spec-divider"></div>
+                <div class="spec-item">
+                    <div class="spec-value"></div>
+                    <div class="spec-label"></div>
+                </div>
+                <div class="spec-divider"></div>
+                <div class="spec-item">
+                    <div class="spec-value"></div>
+                    <div class="spec-label"></div>
+                </div>
+            </div>
+
+            <!-- Car selector nav (top-right) -->
+            <nav id="showroom-car-selector" aria-label="Seletor de carros"></nav>
+
+            <!-- Controls hint (bottom-center) -->
+            <div id="showroom-controls-hint">
+                <div class="ctrl">
+                    <div class="ctrl-icon">&#8635;</div>Arrastar &mdash; Rotar
+                </div>
+                <div class="ctrl">
+                    <div class="ctrl-icon">&#8853;</div>Scroll &mdash; Zoom
+                </div>
+                <div class="ctrl">
+                    <div class="ctrl-icon">&#10021;</div>Shift+Arrastar &mdash; Mover
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Application Modules -->
+    <script src="js/accessibility.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/threejs-scene.js"></script>
+
+    <script type="module">
+        // ── Showroom module (lazy-loaded on first card click) ──────────────
+        let showroomModule = null;
+        const showroomModal = document.getElementById('showroom-modal');
+
+        async function loadShowroomModule() {
+            if (!showroomModule) {
+                showroomModule = await import('./js/showroom/main.js');
+            }
+            return showroomModule;
+        }
+
+        // Expose globally so onclick attributes on cards can call them
+        window.openShowroom = async function (carId) {
+            showroomModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => showroomModal.classList.add('visible'));
+
+            const mod = await loadShowroomModule();
+            await mod.initShowroom(carId);
+        };
+
+        window.closeShowroom = function () {
+            showroomModal.classList.remove('visible');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                showroomModal.style.display = 'none';
+                if (showroomModule) showroomModule.pauseShowroom();
+            }, 400);
+        };
+
+        // Close on backdrop click
+        document.getElementById('showroom-modal-backdrop').addEventListener('click', window.closeShowroom);
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && showroomModal.style.display !== 'none') window.closeShowroom();
+        });
+    </script>
+
+</body>
+
+</html>
