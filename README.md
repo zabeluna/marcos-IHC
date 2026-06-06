@@ -58,18 +58,18 @@ Acesse no navegador: `http://localhost:8000`
 
 Este projeto foi desenvolvido por uma equipe de 4 integrantes. Abaixo estão as principais responsabilidades de cada um (você pode editar os nomes abaixo):
 
-- **[Nome do Integrante 1]**  
+- **Izabelle Luna**  
   *Frontend & UI/UX Design*  
   Responsável pela estruturação das páginas (HTML), design da interface premium, tipografia e estilização responsiva utilizando Tailwind CSS.
 
-- **[Nome do Integrante 2]**  
+- **Lucas Raphael**  
   *Integração 3D (Three.js)*  
   Responsável pela implementação do Showroom 3D, carregamento otimizado de modelos GLTF/GLB, controle de câmera, iluminação virtual e manipulação do canvas 3D.
 
-- **[Nome do Integrante 3]**  
+- **Matteus**  
   *Animações e Interatividade*  
   Responsável pela integração do GSAP e ScrollTrigger para criar animações fluidas de scroll, *hover states* complexos nos cards e a lógica e design dos modais interativos.
 
-- **[Nome do Integrante 4]**  
+- **Guilherme Jatobá**  
   *Acessibilidade e Dados (JSON)*  
   Responsável pela implementação de recursos de acessibilidade (como botões de ajuste de fonte e widget do VLibras) e estruturação dos dados dinâmicos do catálogo através do `cars.json`.
