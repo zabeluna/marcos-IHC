@@ -15,14 +15,20 @@
     const FONT_MAX  = 24;
     const FONT_STEP = 2;
 
-    // Read current font size from the html element (default 16px)
+    const STORAGE_KEY = 'a11y-font-size';
+
     function getCurrentFontSize() {
         return parseInt(getComputedStyle(htmlElement).fontSize, 10) || 16;
     }
 
     function setFontSize(px) {
         htmlElement.style.fontSize = `${px}px`;
+        localStorage.setItem(STORAGE_KEY, px);
     }
+
+    // Restore saved font size on load
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    if (saved && saved >= FONT_MIN && saved <= FONT_MAX) setFontSize(saved);
 
     increaseFontBtn.addEventListener('click', () => {
         const current = getCurrentFontSize();
