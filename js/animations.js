@@ -13,17 +13,20 @@
     });
 
     // ── Catalog cards reveal ─────────────────────────────────────────────────
-    gsap.from(".catalog-card-3d", {
-        scrollTrigger: {
-            trigger: "#collection",
-            start: "top 80%",
-        },
-        y: 50,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out"
+    gsap.utils.toArray(".catalog-card-3d").forEach(function (card, i) {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            y: 50,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: "power2.out"
+        });
     });
 
     // ══════════════════════════════════════════════════════════════════════════
