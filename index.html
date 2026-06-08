@@ -279,6 +279,157 @@
         </div>
     </section>
 
+    <!-- ========================
+         PERFORMANCE SECTION
+         ======================== -->
+    <section class="perf-section py-24 px-margin-mobile md:px-margin-desktop bg-[#060606] border-t border-[#1F1F1F] overflow-hidden relative"
+        id="performance">
+
+        <!-- Ambient glow background -->
+        <div class="perf-ambient-glow"></div>
+
+        <div class="max-w-container-max mx-auto relative z-10">
+
+            <!-- Section header -->
+            <div class="mb-20 perf-reveal">
+                <h2
+                    class="text-headline-lg font-headline-lg text-on-surface uppercase border-l-4 border-secondary-container pl-4">
+                    Performance
+                </h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant mt-4 max-w-xl">
+                    Números que definem lendas. Compare a potência bruta, aceleração e velocidade
+                    máxima dos nossos modelos icônicos.
+                </p>
+            </div>
+
+            <!-- Counter highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <!-- Total Horsepower -->
+                <div class="perf-counter-card perf-reveal">
+                    <div class="perf-counter-icon">
+                        <span class="material-symbols-outlined">bolt</span>
+                    </div>
+                    <div class="perf-counter-value" data-count-to="521" data-suffix=" cv">0 cv</div>
+                    <div class="perf-counter-label">Potência Total Combinada</div>
+                    <div class="perf-counter-sub">Três máquinas lendárias</div>
+                </div>
+                <!-- Best 0-100 -->
+                <div class="perf-counter-card perf-reveal">
+                    <div class="perf-counter-icon">
+                        <span class="material-symbols-outlined">speed</span>
+                    </div>
+                    <div class="perf-counter-value" data-count-to="5.5" data-suffix="s" data-decimals="1">0s</div>
+                    <div class="perf-counter-label">Melhor 0–100 km/h</div>
+                    <div class="perf-counter-sub">Porsche 911 930 Turbo</div>
+                </div>
+                <!-- Top Speed -->
+                <div class="perf-counter-card perf-reveal">
+                    <div class="perf-counter-icon">
+                        <span class="material-symbols-outlined">trophy</span>
+                    </div>
+                    <div class="perf-counter-value" data-count-to="250" data-suffix=" km/h">0 km/h</div>
+                    <div class="perf-counter-label">Velocidade Máxima</div>
+                    <div class="perf-counter-sub">Porsche 911 930 Turbo</div>
+                </div>
+            </div>
+
+            <!-- Car comparison bars -->
+            <div class="perf-comparison perf-reveal">
+                <h3 class="text-headline-md font-headline-md text-on-surface uppercase mb-10 tracking-widest text-center">
+                    Comparativo de Desempenho
+                </h3>
+
+                <!-- Horsepower comparison -->
+                <div class="perf-bar-group">
+                    <div class="perf-bar-title">
+                        <span class="material-symbols-outlined text-sm">bolt</span>
+                        Potência (cv)
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Porsche 911</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="100" style="--bar-color: #c9a84c;"></div>
+                        </div>
+                        <span class="perf-bar-value">260</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Fiat Punto GT</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="50" style="--bar-color: #e4b74b;"></div>
+                        </div>
+                        <span class="perf-bar-value">131</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Datsun 240K</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="50" style="--bar-color: #e0a53a;"></div>
+                        </div>
+                        <span class="perf-bar-value">130</span>
+                    </div>
+                </div>
+
+                <!-- 0-100 comparison -->
+                <div class="perf-bar-group">
+                    <div class="perf-bar-title">
+                        <span class="material-symbols-outlined text-sm">speed</span>
+                        Aceleração 0–100 km/h (segundos — menor é melhor)
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Porsche 911</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="55" style="--bar-color: #c9a84c;"></div>
+                        </div>
+                        <span class="perf-bar-value">5.5s</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Fiat Punto GT</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="79" style="--bar-color: #e4b74b;"></div>
+                        </div>
+                        <span class="perf-bar-value">7.9s</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Datsun 240K</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="100" style="--bar-color: #e0a53a;"></div>
+                        </div>
+                        <span class="perf-bar-value">10.0s</span>
+                    </div>
+                </div>
+
+                <!-- Top Speed comparison -->
+                <div class="perf-bar-group">
+                    <div class="perf-bar-title">
+                        <span class="material-symbols-outlined text-sm">trophy</span>
+                        Velocidade Máxima (km/h)
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Porsche 911</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="100" style="--bar-color: #c9a84c;"></div>
+                        </div>
+                        <span class="perf-bar-value">250</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Fiat Punto GT</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="81" style="--bar-color: #e4b74b;"></div>
+                        </div>
+                        <span class="perf-bar-value">203</span>
+                    </div>
+                    <div class="perf-bar-row">
+                        <span class="perf-bar-car-name">Datsun 240K</span>
+                        <div class="perf-bar-track">
+                            <div class="perf-bar-fill" data-perf-width="70" style="--bar-color: #e0a53a;"></div>
+                        </div>
+                        <span class="perf-bar-value">175</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section class="py-24 px-margin-mobile md:px-margin-desktop bg-[#080808] border-t border-[#1F1F1F]"
         id="engineering">
         <div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
