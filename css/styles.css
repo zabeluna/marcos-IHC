@@ -683,3 +683,239 @@ div[vw].left {
 #showroom-close-btn {
     z-index: 200 !important;
 }
+
+/* ============================
+   PERFORMANCE SECTION
+   ============================ */
+
+.perf-section {
+    position: relative;
+}
+
+/* Ambient background glow */
+.perf-ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Counter cards */
+.perf-counter-card {
+    background: rgba(13, 13, 13, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.perf-counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--sr-gold, #c9a84c), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.perf-counter-card:hover {
+    border-color: rgba(201, 168, 76, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 168, 76, 0.04);
+}
+
+.perf-counter-card:hover::before {
+    opacity: 1;
+}
+
+.perf-counter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 50%;
+    color: #c9a84c;
+    font-size: 24px;
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.perf-counter-icon .material-symbols-outlined {
+    font-size: 24px;
+}
+
+.perf-counter-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: #f0ece4;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.perf-counter-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 6px;
+}
+
+.perf-counter-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #7a7570;
+}
+
+/* Comparison bars */
+.perf-comparison {
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 36px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.perf-bar-group {
+    margin-bottom: 32px;
+}
+
+.perf-bar-group:last-child {
+    margin-bottom: 0;
+}
+
+.perf-bar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #7a7570;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.perf-bar-title .material-symbols-outlined {
+    font-size: 16px;
+    color: #c9a84c;
+}
+
+.perf-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.perf-bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.perf-bar-car-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 236, 228, 0.6);
+    min-width: 110px;
+    flex-shrink: 0;
+}
+
+.perf-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.perf-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--bar-color, #c9a84c), color-mix(in srgb, var(--bar-color, #c9a84c) 70%, white));
+    border-radius: 3px;
+    position: relative;
+    transition: none; /* GSAP handles animation */
+}
+
+.perf-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    bottom: -2px;
+    width: 4px;
+    background: var(--bar-color, #c9a84c);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--bar-color, #c9a84c), 0 0 16px color-mix(in srgb, var(--bar-color, #c9a84c) 50%, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.perf-bar-fill.filled::after {
+    opacity: 1;
+}
+
+.perf-bar-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f0ece4;
+    min-width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Reveal animation helper */
+.perf-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Engineering section reveal */
+.eng-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .perf-comparison {
+        padding: 24px 18px;
+    }
+
+    .perf-bar-car-name {
+        min-width: 80px;
+        font-size: 0.6rem;
+    }
+
+    .perf-bar-value {
+        min-width: 40px;
+        font-size: 0.75rem;
+    }
+
+    .perf-counter-card {
+        padding: 24px 20px;
+    }
+}
